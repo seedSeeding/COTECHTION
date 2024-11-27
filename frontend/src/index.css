@@ -1316,6 +1316,7 @@ table tr td,table tr th{
   font-weight: 700;
   padding:3px 10px;
   color:white;
+  cursor: pointer;
 }
 
 .food-sale-date{

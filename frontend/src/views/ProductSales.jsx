@@ -15,44 +15,74 @@ export default function ProductSales() {
   const [width, setWidth] = useState(200);
   const [productType, setProductType] = useState('FEED');
   const [isLoading, setIsloading] = useState(true);
-  const {user} = useStateContext();
+  const { user } = useStateContext();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
-      if(user.position != "COOPERATIVE HEAD"){
-          return navigate("/");
-      }
-     },[])
-    
+    if (user.position != "COOPERATIVE HEAD") {
+      return navigate("/");
+    }
+  }, [])
+
   const handleDateChange = (e) => {
-    setDate(e.target.value);
+    const inputDate = e.target.value.split('/').reverse().join('-'); 
+    setDate(inputDate);
   };
+  
+  // useEffect(() => {
+  //   setIsloading(true);
+  //   axiosService.get('products')
+  //     .then(({ data }) => {
+  //       setProductData(data);
+  //       setIsloading(false);
 
+  //     })
+  //     .catch((error) => {
+  //       console.error(error.message);
+  //     });
+  //   setIsloading(false);
+  // }, []);
+
+  /******************************* */
   useEffect(() => {
-    setIsloading(true);
-    axiosService.get('products')
-      .then(({ data }) => {
-        setProductData(data);
-        setIsloading(false);
-        
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
+    const fetchProducts = async () => {
+      setIsloading(true);
+      try {
+        setIsloading(true);
+        const response = await axiosService.get('products');
+        console.log(response.data)
+        if (response.data.message) {
+          setProductData([]);
+          setIsloading(false);
+        } else {
+          setProductData(response.data);
+          console.log('Products fetched:', response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        alert('Failed to load products. Please try again.');
+      }
+    };
+
+    fetchProducts();
     setIsloading(false);
-  }, []);
 
+  }, []);
+  /******************************** */
   useEffect(() => {
     setIsloading(true);
-    setData(null);
+    setData([]);
     if (productData.length > 0) {
-      axiosService.get("sales-report", { params: { filter_date: date } })
+      setIsloading(true);
+      // alert(date)
+      axiosService.get("sales-report", { params: { filter_date: `${date}` } })
         .then(({ data }) => {
           setData(data.sales);
-          
+          setIsloading(false);
         })
         .catch((error) => {
           console.error(error.message);
+          setIsloading(false);
         });
 
       const imageMap = {};
@@ -60,7 +90,7 @@ export default function ProductSales() {
       productData.forEach((element) => {
         if (element.product_type === productType) {
           newWidth += 100;
-          imageMap[element.product_name] = "http://localhost:8000/storage/" + element.product_image;
+          imageMap[element.product_name] = `${import.meta.env.VITE_STORAGE_BASE_URL}/` + element.product_image;
         }
       });
       setWidth(newWidth);
@@ -72,46 +102,45 @@ export default function ProductSales() {
   useEffect(() => {
     setFilteredSales([]);
     if (data) {
-      
-      const salesData = data
-        .filter(element => element.product_type === productType)
+
+      const salesData = data?.filter(element => element.product_type === productType)
         .map(element => ({
           name: element.product_name,
           value: element.total_quantity,
           product_id: element.product_id,
         }));
       setFilteredSales(salesData);
-    
+
     }
   }, [data, productType]);
 
   return (
     <div className="container product-sales">
-      {isLoading && (<Loader/>)}
+      {isLoading && (<Loader />)}
       <div className="sales-nav">
         <button className="food-sale-btn" onClick={() => setProductType('FOOD')}>FOOD</button>
         <button className="food-sale-btn" onClick={() => setProductType('FEED')}>PIG FEEDS</button>
         <button className="food-sale-btn" onClick={() => setProductType('HOUSEHOLD')}>HOUSEHOLD ITEMS</button>
         <button className="food-sale-btn" onClick={() => setProductType('PERSONAL')}>PERSONAL CARE ITEMS</button>
         <button className="food-sale-btn" onClick={() => setProductType('LAUNDRY')}>LAUNDRY ITEMS</button>
-        <input 
-          type="date" 
-          className="food-sale-date" 
-          onChange={handleDateChange} 
-          value={date} 
+        <input
+          type="date"
+          className="food-sale-date"
+          onChange={handleDateChange}
+          value={date}
         />
       </div>
       {isLoading ? (
-        <CircleLoader message="Fetching data..."/>
-      ): (
+        <CircleLoader message="Fetching data..." />
+      ) : (
         <div className="graph-container">
-        {filteredSales ? (
-           <BarGraph className="bargraph" img={dataImages} data={filteredSales} width={width} />
-        ):
-          (<>
-              <h1 >No Records</h1>
-          </>)}
-      </div>
+          {filteredSales.length > 0 ? (
+            <BarGraph className="bargraph" img={dataImages} data={filteredSales} width={width} />
+          ) : (
+            <h1>No Records</h1>
+          )}
+
+        </div>
       )}
     </div>
   );

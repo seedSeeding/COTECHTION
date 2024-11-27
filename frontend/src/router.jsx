@@ -17,6 +17,7 @@ import ProductListPage from './views/ProductListPage.jsx';
 import NotFound from './notFound/NotFound.jsx';
 import Verification from './views/Verification.jsx';
 import RegistrationPage from './views/RegistrationPage.jsx';
+import Food from './components/Food.jsx';
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
                 path: 'products',
                 element: <ProductPage />,
                 children: [
+                    { path: 'foods', element: <Food /> },
                     { path: 'faultry', element: <Faultry /> },
                     { path: 'household', element: <Household /> },
                     { path: 'laundry', element: <Laundry /> },

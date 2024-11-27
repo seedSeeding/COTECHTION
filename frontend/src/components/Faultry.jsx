@@ -44,7 +44,7 @@ export default function Faultry() {
                             if (item.product_catigory == "SIDC")
                                 return (
                                     <Product key={item.id}
-                                        product_image={item.product_image}
+                                        product_image={`${import.meta.env.VITE_STORAGE_BASE_URL}/${item.product_image}`}
                                         product_name={item.product_name}
                                         id={item.id}
                                         product_quantity={item.product_quantity
@@ -64,7 +64,7 @@ export default function Faultry() {
                             if (item.product_catigory == "LIMCOMA")
                                 return (
                                     <Product key={item.id}
-                                        product_image={item.product_image}
+                                        product_image={`${import.meta.env.VITE_STORAGE_BASE_URL}/${item.product_image}`}
                                         product_name={item.product_name}
                                         id={item.id}
                                         product_quantity={item.product_quantity

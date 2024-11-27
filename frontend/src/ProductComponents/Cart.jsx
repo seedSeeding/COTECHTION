@@ -16,7 +16,10 @@ export default function Cart() {
         totalPriceArray.forEach((price) => setTotalPrice(price + totalPrice));
         console.log(totalPrice);
     }, [cart])
-    
+    const fetechImage = (image) => {
+        // alert(image)
+        return `${import.meta.env.VITE_STORAGE_BASE_URL}/${image}`;
+    };
     const handleSaveSale = () => {
         cart.forEach((item) => {
             axiosService.post('store', {
@@ -58,8 +61,10 @@ export default function Cart() {
                                     </thead>
                                     <tbody>
                                         {cart.map((data) => (
+
                                             <tr key={data.id}>
-                                                <td className="image-row"><img src={`${import.meta.env.VITE_IMAGE_API_URL}/${data.product_image}`} alt="" /></td>
+                                              
+                                                <td className="image-row"><img src={`${fetechImage(data.product_image)}`} alt="" /></td>
                                                 <td>{ data.product_name}</td>
                                                 <td>{ data.product_price}</td>
                                                 <td>{ data.product_quantity }</td>

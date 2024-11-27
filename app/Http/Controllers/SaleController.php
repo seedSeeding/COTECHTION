@@ -69,28 +69,26 @@ class SaleController extends Controller
                 "errors" => $validator->messages()
             ], 422);
         }
-    
-        // $sales = Sale::where(DB::raw('DATE(sales.created_at)'), [$request->filter_date])
-        //     ->join('products', 'sales.product_id', '=', 'products.id')
-        //     ->select(
-        //         DB::raw("DATE(sales.created_at) as date"),
-        //         DB::raw('SUM(sales.quantity * products.product_price) as total'),
-        //         DB::raw('SUM(sales.quantity) as total_quantity'),
-        //         'sales.product_id',
-        //         'products.product_name',
-        //         "products.product_type"
-                
-        //     )
-        //     ->groupBy(DB::raw("DATE(sales.created_at)"), 'sales.product_id')
-        //     ->orderBy('date')
-        //     ->get();
-    
-        // if ($sales->isEmpty()) {
-        //     return response()->json(['error' => 'No matching sales records found for the specified product and date range.'], 404);
-        // }
+        $sales = Sale::whereDate('created_at', $request->filter_date)->get();
+        $salesData = [];
+
+        foreach($sales as $sale){
+            $product = Product::find($sale->product_id); 
+            $salesData[] = [
+                "date" => $sale->created_at->format('Y-m-d'),
+                "total" => $sale->quantity * $product->product_price,
+                "total_quantity" => $sale->quantity,
+                "product_name" => $product->product_name,
+                "product_type" => $product->product_type,
+            ];
+        }
+
+        if (!$salesData) {
+            return response()->json(['error' => 'No matching sales records found for the specified product and date range.'], 404);
+        }
     
         return response()->json([
-            "sales" => "report",
+            "sales" => $salesData,
         
         ]);
     }

@@ -54,7 +54,7 @@ export default function Laundry() {
             {leftProducts.map((item) => (
               <Product
                 key={item.id}
-                product_image={item.product_image}
+                product_image={`${import.meta.env.VITE_STORAGE_BASE_URL}/${item.product_image}`}
                 product_name={item.product_name}
                 id={item.id}
                 product_quantity={item.product_quantity}
@@ -67,7 +67,7 @@ export default function Laundry() {
             {rightProducts.map((item) => (
               <Product
                 key={item.id}
-                product_image={item.product_image}
+                product_image={`${import.meta.env.VITE_STORAGE_BASE_URL}/${item.product_image}`}
                 product_name={item.product_name}
                 id={item.id}
                 product_quantity={item.product_quantity}

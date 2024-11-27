@@ -3,7 +3,7 @@ import Product from "../ProductComponents/Product";
 import apiService from "./Services/apiService";
 import CircleLoader from "../Loader/CircleLoader.jsx";
 import axiosService from "../views/axios-client.js";
-export default function Household() {
+export default function Food() {
   const [products, setProducts] = useState([]);
   const [leftProducts, setLeftProducts] = useState([]);
     const [rightProducts, setRightProducts] = useState([]);
@@ -31,9 +31,8 @@ export default function Household() {
       fetchProducts();
     }, []);
   useEffect(() => {
-    const filtered = products.filter((data) => data.product_type === "HOUSEHOLD");
+    const filtered = products.filter((data) => data.product_type === "FOOD");
     setFilteredProducts(filtered);
-      
 
     if (filtered.length > 0) {
       const half = Math.ceil(filtered.length / 2);
@@ -53,7 +52,7 @@ export default function Household() {
           
               <Product
                 key={item.id}
-                product_image={`${import.meta.env.VITE_STORAGE_BASE_URL}/${item.product_image}`}
+                product_image={`${item.product_image}`}
                 product_name={item.product_name}
                 id={item.id}
                 product_quantity={item.product_quantity}

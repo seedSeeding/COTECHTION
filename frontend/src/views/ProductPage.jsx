@@ -17,6 +17,9 @@ export default function ProductPage() {
     
                 <div className="container">
                     <div className="product-nav-con">
+                    <div className="products-nav">
+                            <Link className="items-nav" to='/products/foods'>Foods</Link>
+                        </div>
                         <div className="products-nav">
                             <Link className="items-nav" to='/products/faultry'>Feed Items</Link>
                         </div>

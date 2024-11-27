@@ -31,7 +31,8 @@ export const ContextProvider = ({ children }) => {
         const existingProduct = cart.find(item => item.id === newItem.id);
         if (existingProduct) {
             _setCart(cart.map(item =>
-                item.id === newItem.id ? { ...item, product_quantity: item.product_quantity + 1 }:item
+                item.id === newItem.id ? { ...item, product_quantity: item.product_quantity + 1 ,
+                    product_image:`${item.product_image}`}:item
             ));
         } else
             {
