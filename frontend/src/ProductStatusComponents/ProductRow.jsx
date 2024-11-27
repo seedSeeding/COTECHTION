@@ -113,8 +113,7 @@ export default function ProductRow({ product }) {
                                         : "#0bcc0d"}`
                         }}
                     >
-                        {/* {Math.abs(daysLeft)}  */}
-                        {selectedBatch.expiration_date} 
+                        {Math.abs(daysLeft)}  days left
                     </div>
                 </div>
             </td>
