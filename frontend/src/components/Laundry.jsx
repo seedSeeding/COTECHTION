@@ -34,7 +34,7 @@ export default function Laundry() {
   }, []);
 
   useEffect(() => {
-    const filtered = products.filter((data) => data.product_type === "LAUNDRY");
+    const filtered = products.filter((data) => data.product_type === "LUANDRY");
     setFilteredProducts(filtered);
     console.log("Filtered: ", products);
     if (filtered.length > 0) {

@@ -9,6 +9,9 @@ import Loader from "../Loader/Loader";
 import Notication from "../Notification/Notification.jsx";
 import SearchBox from "../Search/SearchBox.jsx";
 export default function DefaultLayout() {
+    // localStorage.clear;
+    // alert(localStorage.getItem("token"));
+    // localStorage.removeItem("token");
     const { user, setUser, token, setToken } = useStateContext();
     const [notifVisible, setNotifVisible] = useState(false);
     const [notifChecked, setNotifChecked] = useState(false);
