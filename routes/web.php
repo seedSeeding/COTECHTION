@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/{any}', function () {
     return view('welcome');
-});
-Auth::routes(['verify' => true]);
+})->where('any', '.*'); 
+
+Route::get('/storage/{path}', function ($path) {
+    return response()->file(storage_path("/storage/{$path}"));
+})->where('path', '.*');
+// Auth::routes(['verify' => true]);
