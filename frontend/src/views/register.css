@@ -1,0 +1,142 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('https://image.slidesdocs.com/responsive-images/background/forest-green-light-green-path-powerpoint-background_d48790ac8a__960_540.jpg');
+    background-color: #e8f5e9; 
+    color: #2e7d32; 
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container-register {
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    margin: auto;
+    background-color: hsla(119, 100%, 11%, 0.741); 
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+    
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.register-title {
+    color: white; 
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #a5d6a7; 
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #4caf50; 
+    outline: none;
+}
+
+.select-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #a5d6a7;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #2e7d32;
+    background-color: #f1f8e9; 
+    transition: border-color 0.3s ease;
+}
+
+.select-field:focus {
+    border-color: #1ddd23;
+    outline: none;
+}
+
+
+.register-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #007614;
+    padding: 1em 2em;
+    border: none;
+    border-radius: .6rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .register-btn span:not(:nth-child(6)) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 30px;
+    width: 30px;
+    background-color: green;
+    border-radius: 50%;
+    transition: .6s ease;
+  }
+  
+  .register-btn span:nth-child(6) {
+    position: relative;
+  }
+  
+  .register-btn span:nth-child(1) {
+    transform: translate(-3.3em, -4em);
+  }
+  
+  .register-btn span:nth-child(2) {
+    transform: translate(-6em, 1.3em);
+  }
+  
+  .register-btn span:nth-child(3) {
+    transform: translate(-.2em, 1.8em);
+  }
+  
+  .register-btn span:nth-child(4) {
+    transform: translate(3.5em, 1.4em);
+  }
+  
+  .register-btn span:nth-child(5) {
+    transform: translate(3.5em, -3.8em);
+  }
+  
+  .register-btn:hover span:not(:nth-child(6)) {
+    transform: translate(-50%, -50%) scale(4);
+    transition: 1.5s ease;
+  }
+    
+.message {
+    font-size: 16px;
+    color: #d32f2f; 
+    margin-top: 15px;
+}

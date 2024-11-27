@@ -1,0 +1,41 @@
+****************************** BACKTEND, MAIN FOLDER
+
+cp .env.example .env
+composer install
+php artisan key:generate
+composer require laravel/ui "^4.5"
+php artisan storage:link
+php artisan migrate
+
+
+****************************** FRONTEND, frontend FOLDER
+
+cd frontend
+
+npm install
+
+************** lahatan
+
+npm install @emotion/styled@^11.13.0 @fortawesome/fontawesome-svg-core@^6.6.0 @fortawesome/free-regular-svg-icons@^6.6.0 @fortawesome/free-solid-svg-icons@^6.6.0 @fortawesome/react-fontawesome@^0.2.2 @mui/material@^6.0.2 @mui/x-charts@^7.15.0 chart.js@^4.4.4 moment@^2.30.1 prop-types@^15.8.1 react@^18.3.1 react-chartjs-2@^5.2.0 react-dom@^18.3.1 react-router-dom@^6.26.1 recharts@^2.12.7
+
+************** isahan
+
+npm install @emotion/styled@^11.13.0
+npm install @fortawesome/fontawesome-svg-core@^6.6.0
+npm install @fortawesome/free-regular-svg-icons@^6.6.0
+npm install @fortawesome/free-solid-svg-icons@^6.6.0
+npm install @fortawesome/react-fontawesome@^0.2.2
+npm install @mui/material@^6.0.2
+npm install @mui/x-charts@^7.15.0
+npm install chart.js@^4.4.4
+npm install moment@^2.30.1
+npm install prop-types@^15.8.1
+npm install react@^18.3.1
+npm install react-chartjs-2@^5.2.0
+npm install react-dom@^18.3.1
+npm install react-router-dom@^6.26.1
+npm install recharts@^2.12.7
+
+
+
+
