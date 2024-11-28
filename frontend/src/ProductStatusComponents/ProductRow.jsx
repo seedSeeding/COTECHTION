@@ -76,7 +76,7 @@ export default function ProductRow({ product }) {
             <td className="table-d rel">{selectedBatch.product_name}</td>
             <td className="table-d rel">{selectedBatch.product_quantity} pcs</td>
             
-            <td className="table-d">
+            <td className="table-d ">
                 {selectedBatch.product_quantity <= 20 && (
                     <div className="tooltip">
                         <span className="tooltiptext">
