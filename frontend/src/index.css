@@ -473,7 +473,6 @@ table{
   padding: 10px;
   color: #000;
   
-  
 }
 .table-d.rel{
   position: relative;
@@ -533,13 +532,13 @@ table tr td,table tr th{
 }
 
 .tooltip {
-  position: absolute;
+  position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
   margin-top: -10px;
-  margin-left: -150px;
+  margin-left: -70%;
   opacity: 0.9;
-  z-index:4;
+  z-index:309993;
 }
 
 .tooltip .tooltiptext {
