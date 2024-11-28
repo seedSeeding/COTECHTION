@@ -74,7 +74,7 @@ class SaleController extends Controller
 
         foreach($sales as $sale){
             $product = Product::find($sale->product_id); 
-            if(!$product){
+            if($product){
                 $salesData[] = [
                     "date" => $sale->created_at->format('Y-m-d'),
                     "total" => $sale->quantity * $product->product_price,
