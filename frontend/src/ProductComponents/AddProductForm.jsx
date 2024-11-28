@@ -29,11 +29,11 @@ export default function AddProductForm() {
             return;
         }
     
-        const formattedDate = moment(productDate, "DD-MM-YYYY").format("YYYY-MM-DD");
-        const formattedExpDate = moment(productExpDate, "DD-MM-YYYY").format("YYYY-MM-DD");
+        // const formattedDate = moment(productDate, "DD-MM-YYYY").format("YYYY-MM-DD");
+        // const formattedExpDate = moment(productExpDate, "DD-MM-YYYY").format("YYYY-MM-DD");
     
-      
-        if (moment(formattedExpDate).isBefore(formattedDate)) {
+        console.log("exp::",productExpDate,"date::",productDate);
+        if (moment(productExpDate).isBefore(productDate)) {
             alert('Expiration date cannot be earlier than the product date.');
             return;
         }
@@ -51,8 +51,8 @@ export default function AddProductForm() {
             'product_price': Number(productPrice),
             'product_quantity': Number(productQuantity),
             'stock_limit': Number(stockLimit),
-            'product_date': formattedDate,
-            'expiration_date': formattedExpDate,
+            'product_date': productDate,
+            'expiration_date': productExpDate,
             'product_catigory': productType === "FEED" ? organization : "NONE",
             "user_email": user.email,
             "batch": 1

@@ -122,7 +122,7 @@ export default function ProductSales() {
         <button className="food-sale-btn" onClick={() => setProductType('FEED')}>PIG FEEDS</button>
         <button className="food-sale-btn" onClick={() => setProductType('HOUSEHOLD')}>HOUSEHOLD ITEMS</button>
         <button className="food-sale-btn" onClick={() => setProductType('PERSONAL')}>PERSONAL CARE ITEMS</button>
-        <button className="food-sale-btn" onClick={() => setProductType('LAUNDRY')}>LAUNDRY ITEMS</button>
+        <button className="food-sale-btn" onClick={() => setProductType('LUANDRY')}>LAUNDRY ITEMS</button>
         <input
           type="date"
           className="food-sale-date"
