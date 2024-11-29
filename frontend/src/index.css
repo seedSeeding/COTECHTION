@@ -474,6 +474,7 @@ table{
   color: #000;
   
 }
+
 .table-d.rel{
   position: relative;
 }
@@ -532,13 +533,21 @@ table tr td,table tr th{
 }
 
 .tooltip {
-  position: relative;
+  position: absolute;
   display: inline-block;
   border-bottom: 1px dotted black;
   margin-top: -10px;
-  margin-left: -70%;
+  margin-left: -150px;
   opacity: 0.9;
-  z-index:309993;
+  z-index:999999999999999999999999999999999999999;
+
+}
+.table-d .tooltip {
+  z-index: 9999 !important; 
+}
+
+.table-d {
+  overflow: visible;
 }
 
 .tooltip .tooltiptext {

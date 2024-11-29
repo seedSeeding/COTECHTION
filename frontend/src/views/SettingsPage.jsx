@@ -113,7 +113,7 @@ export default function SettingsPage() {
         <>
             <div className="container setting">
                 <div className="setting-profile">
-                    <img src="../../public/Image/user-logo.png" alt="" />
+                    <img src="./Image/user-logo.png" alt="" />
                     <span className="sett-prof-detail">
                         <span className="sett-prof-position">{user.position}</span><br />
                         <span className="sett-prof-email">{user.email}</span>
